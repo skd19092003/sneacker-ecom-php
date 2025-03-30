@@ -1,2 +1,2 @@
-# cantilever-task1-ecommerce
+# sneakers-ecommerce
  A frontend ecommerce model using javascript
