@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             $_SESSION['auth'] = true;
-            $_SESSION['username'] = $username;
+            $_SESSION['username'] = $userEmail;
             //render login
             if (isset($_SESSION['username'])) {
                 echo json_encode(array("username" => $_SESSION['username']));
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo json_encode(array("username" => null));
             }
 
-            header("Location: ../home.html", true, 301);  // 301 Moved Permanently
+            header("Location: ../", true, 301);  // 301 Moved Permanently
             exit();
         } else {
             echo '<script>window.alert("email or password is incorrect")</script>';

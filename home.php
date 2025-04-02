@@ -26,8 +26,13 @@
             </div>
             <div class="navItem">
                 <span class="limitedOffer">
-                  <a href="./backend/signout.php"><button class="signout">SIGN-OUT</button></a></span>
-                </button></span>
+                  <a href="#"><button class="userInfo"><?php echo $_SESSION['username']; ?></button></a>
+                </span>
+            </div>
+            <div class="navItem">
+                <span class="limitedOffer">
+                  <a href="./backend/signout.php"><button class="signout"><?php if($_SESSION['username']){echo "Sign-out";}else{echo "Login";} ?></button></a>
+                </span>
             </div>
         </div>
         <div class="navBottom">

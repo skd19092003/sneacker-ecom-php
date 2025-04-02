@@ -9,7 +9,7 @@
     session_destroy();  // End the session
 
     // Redirect to the login page after logging out
-    header("Location: ../index.html");  // Or wherever you want to redirect
+    header("Location: ../");  // Or wherever you want to redirect
     exit();
 ?>
 

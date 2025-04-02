@@ -9,11 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password2 = trim($_POST['confirmpassword']);;
     $phoneNumber= $_POST['phoneNumber'];
     $gender=$_POST['gender'];
-    // echo "data" . $gender."<br>";
     if($password1!==$password2){
-        echo "password does not matched";
+        echo '<script>window.alert("Both password Mis-matched")</script>' ;
         $conn->close();
-        header("Location: ../index.html", true, 301);  // 301 Moved Permanently
+        header("Location: ../", true, 301);  // 301 Moved Permanently
         exit();
     }
     
@@ -22,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows > 0) {
         echo '<script>window.alert("email already exist")</script>' ;  
         $conn->close();
-        header("Location: ../index.html", true, 301);  // 301 Moved Permanently
+        header("Location: ../", true, 301);  // 301 Moved Permanently
         exit();
     }
     else{
@@ -35,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Execute the query
         echo " ".$conn->query($sql);
         if ($conn->query($sql) === TRUE) {
-            echo "New record added successfully!";
+            // echo "New record added successfully!";
             // Start the session
             session_start();
 
@@ -58,24 +57,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             $_SESSION['auth'] = true;
-            $_SESSION['username'] = $username;
+            $_SESSION['username'] = $userEmail;
             if (isset($_SESSION['username'])) {
                 echo json_encode(array("username" => $_SESSION['username']));
             } else {
                 echo json_encode(array("username" => null));
             }
             $conn->close();
-            header("Location: ../home.html", true, 301);  // 301 Moved Permanently
+            header("Location: ../", true, 301);  // 301 Moved Permanently
             exit();
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            // echo "Error: " . $sql . "<br>" . $conn->error;
             echo '<script>window.alert("error in signing")</script>' ;
             $conn->close();  
-            header("Location: ../index.html", true, 301);  // 301 Moved Permanently
+            header("Location: ../", true, 301);  // 301 Moved Permanently
             exit();
         }
     }
     
-    // Close the connection
 }
 ?>

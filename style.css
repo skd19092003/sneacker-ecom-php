@@ -39,7 +39,9 @@ nav {
   color: lightgray;
 }
 
-
+.userInfo{
+  background-color: green;
+}
 .navBottom {
   display: flex;
   align-items: center;
