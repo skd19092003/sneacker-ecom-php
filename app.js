@@ -102,7 +102,11 @@ menuItems.forEach((item, index) => {
 
     //assing new colors
     currentProductColors.forEach((color, index) => {
-      color.style.backgroundColor = choosenProduct.colors[index].code;
+      if (choosenProduct.colors[index]) {
+        color.style.backgroundColor = choosenProduct.colors[index].code;
+      } else {
+        color.style.backgroundColor = "transparent"; // Default color if not available
+      }
     });
   });
 });

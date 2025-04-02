@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up / Sign In</title>
+    <style>
+        .background {
+            background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGJsdXUlMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTY4NzQxNTYyNg&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #f3caca;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+
+            text-align: center;
+        }
+
+        .toggle-btn {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .toggle-btn:hover {
+            background: #0056b3;
+        }
+
+        form {
+            display: none;
+        }
+
+        form.active {
+            display: block;
+        }
+
+        .radio{
+            display: flex;
+            justify-content: space-around;
+        }
+        .radio-item{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        input {
+
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="container">
+            <button class="toggle-btn" onclick="toggleForms()">Switch to Sign Up</button>
+
+            <form id="signin-form" action="./backend/login.php" method="post" class="active">
+                <h2>Sign In</h2>
+                <input name="email" type="email" placeholder="Enter Email" required>
+                <input name="password" type="password" placeholder="Password" required>
+                <button type="submit">Sign In</button>
+            </form>
+
+            <form id="signup-form" action="./backend/signup.php" method="post">
+                <h2>Sign Up</h2>
+                <input name="username" type="text" placeholder="username "  required>
+                <input name="email" type="email" placeholder="Email " required >
+                <input name="password" type="password" placeholder="Password" required >
+                <input name="phoneNumber" type="tel"  placeholder="phone number" minlength="10" maxlength="10"  >
+                <div class="radio">
+                    <div class="radio radio-item" >
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Male</label><br>
+                    </div>
+                    <div class="radio radio-item">
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label><br>
+                    </div>
+                    <div class="radio radio-item">
+                        <input type="radio" id="other" name="gender" value="other">
+                        <label for="other">Other</label><br>
+                    </div>
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const toggleBtn = document.querySelector('.toggle-btn');
+        const signInForm = document.getElementById('signin-form');
+        const signUpForm = document.getElementById('signup-form');
+
+        function toggleForms() {
+            signInForm.classList.toggle('active');
+            signUpForm.classList.toggle('active');
+            toggleBtn.textContent = signUpForm.classList.contains('active')
+                ? 'Switch to Sign In'
+                : 'Switch to Sign Up';
+        }
+    </script>
+</body>
+
+</html>
